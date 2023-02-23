@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+      a:link {
+      text-decoration: none;
+      }
+      a {
+      color: white;
+      }
+      a:hover {
+      color: white;
+      }
+      body {
+      padding-left: 240px;
+      }
+      main {
+      position: relative;
+      height: 100vh;
+      }
+      .menu {
+      background: #5bc995;
+      height: 100vh;
+      width: 240px;
+      position: fixed;
+      top: 0px;
+      left: 0;
+      z-index: 5;
+      outline: none;
+      }
+      .menu .avatar {
+      background: rgba(0, 0, 0, 0.1);
+      padding: 2em 0.5em;
+      text-align: center;
+      }
+      .menu .avatar h2 {
+      font-weight: normal;
+      margin-bottom: 0;
+      }
+      .menu ul {
+      list-style: none;
+      padding: 0.5em 0;
+      margin: 0;
+      }
+      .menu .item{
+        color: white;
+        cursor: pointer;
+      }
+      .menu .sub-menu{
+        padding-left: 20px;
+        line-height: 0px;
+      }
+      .menu .item a{
+        color: white;
+        background: #5bc995;
+        font-size: 16px;
+        text-decoration: none;
+        display: block;
+        padding: 5px 30px;
+        line-height: 30px;
+      }
+      .menu .item a:hover{
+         color: rgb(250, 201, 65);
+        transition: 0.3s ease;
+        }
+        .menu .item i{
+           margin-right: 15px;
+        }
+        .menu .item a .dropdown{
+          position: absolute;
+          right: 0;
+          margin: 9px;
+          transition: 0.3s ease;
+          }
+        .menu .item .sub-menu{
+          background: #5bc995;
+          display: none;
+        }  
+        .rotate{
+          transform: rotate(90deg);
+        }
+      .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+      }
+      .active, .collapsible:hover {
+        background-color: #555;
+      }
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+      }
+</style>
+</head>
+
+<body>
+  <nav class="menu" tabindex="0">
+    <div class="smartphone-menu-trigger"></div>
+    <header class="avatar">
+      <br><br>
+      <h3>Home Page</h3>
+    </header>
+   
+    <ul>
+      <div class="item"><a href="/dashboard"><i class="fas fa-desktop"></i>Dashboard</a></div>
+      
+
+      <div class="item">
+        <a class="sub-btn"><i class="fa fa-shopping-cart"></i>Sales<i class="fas fa-angle-right dropdown"></i></a>
+        <div class="sub-menu">
+          <a href="/addcus" class="sub-item">Customer Details</a><br>
+        
+        </div>
+      </div>
+      
+  </nav>
+  <main>
+    
+    <!-- nav start -->
+    <div class="bs-example">
+      <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style="background:#337AB7;">
+        <a href="/employees" class="navbar-brand">TCM webapp</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav" style=" margin-left: 90%;">
+
+            <a href="/logout" class="nav-item nav-link">Logout</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <br><br>
+    {% block content %}
+    {% endblock content %}
+    <br><br><br><br><br><br><br>
+    
+  </main>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.sub-btn').click(function(){
+        $(this).next('.sub-menu').slideToggle();
+        $(this).find('.dropdown').toggleClass('rotate');
+      });
+    });
+    $(document).ready(function(){
+      $('.alert').hide(4000);
+    });
+  </script>
+
+<script type = "text/javascript">
+  window.onscroll = function() {myFunction()};
+  
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+  
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,84 @@
+
+{% block content %}
+{% load static %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+    h6 {
+      text-align: center;
+    }
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <!---- search bills -->
+     <form  action="/searchcus" method="get" style="margin-left:70%;" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Customer" name="query" id="query" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> 
+
+    
+
+    <button><a href="/AddnewCustomer">Add New Customer</a></button>
+  {% if Customer_date %}
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">  Customer List</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+          <thead>
+              <tr>
+                  
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>PhoneNo</th>
+                  <th>Product</th>
+                  <th>ProductValue</th>
+                  <th>Model</th>
+                  <th>Reasonofleaving</th>
+                  <th>RevisitDate</th> 
+                  <th>Update</th>
+                  <th>Delete</th>
+                 
+              </tr>
+          </thead>
+          {% for Customers in Customer_date %}
+            <tr>
+                
+                <td>{{Customers.Name}}</td>
+                <td>{{Customers.Email}</td>
+                <td>{Customers.PhoneNo}}</td>
+                <td>{{Customers.Product}}</td>
+                <td>{{Customers.ProductValue}}</td>
+                <td>{{Customers.Model}}</td>
+                <td>{Customers.Reasonofleaving}}</td>
+                <td>{{Customers.RevisitDate}}</td>
+                <td><a class="btn btn-primary btn-xs" href="{% url 'updatecus' bills.id %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" href="{% url 'delete-bills' bills.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+            
+
+                
+                
+            </tr>
+          {% endfor %}
+        </table>
+    </div>
+  {%else%}
+    <br><br><br>
+    <h4 style="text-align: center;color: red;">No CustomerdataFound !!!</h4>
+  {% endif %}
+
+
+</div>
+
+{% endblock content %}
