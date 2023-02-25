@@ -10,7 +10,9 @@ def firstpage_view(request):
 
 
 def signin_view(request):
+
     form = Signin_Form()
+
     if request.method == 'POST':
         form = Signin_Form(request.POST)
         if form.is_valid():
@@ -25,7 +27,7 @@ def signin_view(request):
             return redirect("login")
             """
 
-    return render(request,'UserManager/Signin.html', { 'form':form })
+    return render(request,'UserManager/Signin.html', { 'form': form })
 
 
 def login_view(request):
@@ -37,8 +39,13 @@ def login_view(request):
             user.save()
     return render(request,'UserManager/login.html',{ 'form':form })
 
+def base_view(request):
+    return render(request, 'UserManager/navbar.html')
+
 def home_view(request):
     return render(request,'UserManager/Homepage.html')
+
+
 
 
 

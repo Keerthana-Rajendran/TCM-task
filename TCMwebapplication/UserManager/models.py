@@ -8,8 +8,8 @@ class Signin(models.Model):
 
     Name = models.CharField(max_length = 50)
     Email = models.EmailField(max_length = 50)
-    PhoneNo = models.CharField(max_length = 20, null = False)
+    PhoneNo = models.IntegerField()
     Role = models.CharField(max_length = 20, choices = type)
-    Address = models.CharField(max_length = 150)
+    Address = models.CharField(max_length = 100)
     TCM_ID = models.CharField(max_length = 20)
     Set_Password = models.CharField(max_length = 20)

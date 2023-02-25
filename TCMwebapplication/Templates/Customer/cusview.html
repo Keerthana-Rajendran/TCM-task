@@ -21,7 +21,7 @@
 </head>
 
 <div class="container">
-  <!---- search bills -->
+  <!---- search Customer-->
      <form  action="/searchcus" method="get" style="margin-left:70%;" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search Customer" name="query" id="query" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -29,42 +29,45 @@
 
     
 
-    <button><a href="/AddnewCustomer">Add New Customer</a></button>
-  {% if Customer_date %}
+    <button><a href="/addcus">Add New Customer</a></button>
+  {% if customer %}
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h6 class="panel-title">  Customer List</h6>
+        <h6 class="panel-title">Customer List</h6>
       </div>
       <table class="table table-hover" id="dev-table">
           <thead>
               <tr>
                   
                   <th>Name</th>
-                  <th>Email</th>
                   <th>PhoneNo</th>
+                  <th>Email</th>
+                  <th>Location</th>
                   <th>Product</th>
-                  <th>ProductValue</th>
-                  <th>Model</th>
-                  <th>Reasonofleaving</th>
-                  <th>RevisitDate</th> 
+                  <th>Model Description</th>
+                  <th>Product Value</th>
+                  <th>Reason Of Leaving</th>
+                  <th>Revisit Date</th> 
                   <th>Update</th>
                   <th>Delete</th>
                  
               </tr>
           </thead>
-          {% for Customers in Customer_date %}
+          {% for Customers in customer %}
             <tr>
                 
                 <td>{{Customers.Name}}</td>
-                <td>{{Customers.Email}</td>
-                <td>{Customers.PhoneNo}}</td>
+                <td>{{Customers.PhoneNo}}</td>
+                <td>{{Customers.Email}}</td>
+                <td>{{Customers.Location}}</td>
                 <td>{{Customers.Product}}</td>
-                <td>{{Customers.ProductValue}}</td>
-                <td>{{Customers.Model}}</td>
-                <td>{Customers.Reasonofleaving}}</td>
-                <td>{{Customers.RevisitDate}}</td>
-                <td><a class="btn btn-primary btn-xs" href="{% url 'updatecus' bills.id %}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                <td><a class="btn btn-danger btn-xs" href="{% url 'delete-bills' bills.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td>{{Customers.Model_Description}}</td>
+                <td>{{Customers.Product_Value}}</td>
+                <td>{{Customers.Reason_of_leaving}}</td>
+                <td>{{Customers.Revisit_date}}</td>
+
+                <td><a class="btn btn-primary btn-xs" href="{% url 'updatecus' Customers.id %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" href="{% url 'delcus' Customers.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
             
 
                 
@@ -75,7 +78,7 @@
     </div>
   {%else%}
     <br><br><br>
-    <h4 style="text-align: center;color: red;">No CustomerdataFound !!!</h4>
+    <h4 style="text-align: center;color: red;">No Customerdata Found !!!</h4>
   {% endif %}
 
 

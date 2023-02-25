@@ -26,14 +26,15 @@ urlpatterns = [
     path('',userView.firstpage_view),
     path('signin/',userView.signin_view),
     path('login/',userView.login_view),
+    path('base/',userView.base_view),
     path('home/',userView.home_view),
 
   # Path for Customer module
 
     path('addcus/',cusView.Create_CustomerData),
     path('customer/',cusView.Read_CustomerData),
-    path('updatecus/<int:pk>',cusView.update_customer),
-    path('delcus/<int:pk>',cusView.delete_customer),
+    path('updatecus/<int:pk>',cusView.update_customer, name = 'updatecus'),
+    path('delcus/<int:pk>',cusView.delete_customer, name = 'delcus'),
     path('searchcus/',cusView.search_customer_view)
    
 ]
