@@ -27,6 +27,7 @@ def Create_CustomerData(request):
 def Read_CustomerData(request):
 
     customer = Customer_data.objects.all().filter()
+    print(len(customer))
     return render(request,'Customer/cusview.html', {'customer': customer})
 
 #<--------for delete customer data------->
@@ -45,22 +46,23 @@ def update_customer(request, pk):
     customerForm = Customer_Form(instance = customer)
 
     cusDict = {
-        'cusForm': Customer_Form()
+        'cusForm': customerForm
     }
 
     if request.method == 'POST':
-        cusForm = Customer_Form(request.POST, instance = customer)
+        customerForm = Customer_Form(request.POST, instance = customer)
 
-        if cusForm.is_valid():
+        if customerForm.is_valid():
             customer = customerForm.save(commit = True)
             customer.save()
         else:
-             cusDict = {
-                       'cusForm': Customer_Form()
+            cusDict = {
+                       'cusForm': customerForm()
                     }
-             
-            
-    return render(request, 'Customer/updatecust.html', context = cusDict)
+                   
+            return render(request, 'Customer/updatecus.html', context = cusDict)     
+    return render(request, 'Customer/updatecus.html', context = cusDict)
+           
 
 #<------- for search customer data------>
 
