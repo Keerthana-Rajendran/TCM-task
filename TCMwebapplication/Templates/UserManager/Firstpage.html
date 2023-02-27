@@ -1,7 +1,9 @@
-
 {% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
 <style>
-  .note{
+  .note {
     text-align: center;
     color: maroon;
     font-size: 70px;
@@ -20,7 +22,6 @@
       line-height: 35px;
       width: 10%;
       margin-left: 660px;
-    
    }
    .button2{
       text-align: center;
@@ -34,52 +35,38 @@
    }
    .option{
     text-align: center;
+    margin-left: 72px;
    }
    .body{
     background: -webkit-linear-gradient(#0072ff, #8811c5);
    }
 </style>
-<div class="body">
-<br>
-<br>
-
-
-  <div class="jumbotron" style="margin-bottom:0px;">
-
-  <h1 class="display-4" style="text-align:center;">Hello, User</h1>
-
-  <div class = "note"><p class="lead">Welcome to TCM.</p></div>
+<body class="body first-page">
+  <div class="">
+    <div class="jumbotron" style="margin-bottom:0px;">
+      <h1 class="display-4" style="text-align:center;">Hello, User</h1>
+      <div class  ="note">
+        <p class="lead">Welcome to TCM</p>
+      </div>
+    
+      <div class = "text">
+        <p>You can access various features after Login/SignUp.</p>
+      </div>
+      
+      <div class = "button1">
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/signin" role="button">Register</a>
+        </p>
+      </div>
   
-  <div class = "text">
-
-  <p>You can access various features after Login/SignUp.</p>
-  </div>
-
-  <div class = "button1">
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/signin" role="button">Register</a>
-  </div>
-
+      <div class = "button2">
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
+        </p>
+      </div>
   
-  <div class = option><p>Or</p></div>  
-
-  <div class = "button2">
-    <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
-  </p>
+    </div>
   </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-</div>
-</div>
-</div>
+</body>
 
 {% endblock content %}

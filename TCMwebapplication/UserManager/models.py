@@ -1,15 +1,29 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
-
-class Signin(models.Model):
+class CustomUser(AbstractUser):
+    USER_TYPE = [
+        ('Sales Person', 'Sales Person'),
+        ('Sales Manager', 'Sales Manager'),
+        ('Accountant', 'Accountant'),
+        ('Admin', 'Admin')
+    ]
+    email = models.EmailField(max_length=254, unique=True)
+    user_type = models.CharField(max_length=20, choices=USER_TYPE, default='Sales Person')
+    username = models.CharField(max_length=100)
+    PhoneNo = models.CharField(max_length=20)
+    Address = models.CharField(max_length=200)
+    TCM_ID = models.CharField(max_length=50)
+    password1 = models.CharField(max_length=50)
+    password2 = models.CharField(max_length=50)
     
-    type = [('SalesManager1','SalesManager1'),('SalesManager2','SalesManager2'),('SalesExecutive1','SalesExecutive1'),('SalesExecutive2','SalesExecutive2')]
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['user_type']
+    def __str__(self):
+        return self.email
 
-    Name = models.CharField(max_length = 50)
-    Email = models.EmailField(max_length = 50)
-    PhoneNo = models.IntegerField()
-    Role = models.CharField(max_length = 20, choices = type)
-    Address = models.CharField(max_length = 100)
-    TCM_ID = models.CharField(max_length = 20)
-    Set_Password = models.CharField(max_length = 20)
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True

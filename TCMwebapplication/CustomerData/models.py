@@ -5,17 +5,28 @@ from datetime import datetime
 
 class Customer_data(models.Model):
 
-    
-    type = [('Mobile -> Brand','Mobile -> Brand'),
-    ('Accessories','Accessories'),('Home Applicances','Home Applicances'),('AC','AC'),
-    ('IT','IT'),('Small Home Applicances','Small Home Applicances'),('TV','TV'),
-    ('Others','Others')
+    type = [
+        ('Mobile -> Brand', 'Mobile -> Brand'),
+        ('Accessories', 'Accessories'),
+        ('Home Applicances', 'Home Applicances'),
+        ('AC', 'AC'),
+        ('IT', 'IT'),
+        ('Small Home Applicances', 'Small Home Applicances'),
+        ('TV', 'TV'),
+        ('Others', 'Others')
     ]
 
-    options = [('Out of stock','Out of stock'),('Discontinued product','Discontinued product'),
-    ('Pricing','Pricing'),('EMI availability','EMI availability'),('EMI Ineligibility','EMI Ineligibility'),
-    ('Window Shopper','Window Shopper'),('Upcoming Product Enquiry','Upcoming Product Enquiry'),
-    ('Outdated offers','Oudated offers'),('Unspecified','Unspecified'),('Others','Others')
+    options = [
+        ('Out of stock', 'Out of stock'),
+        ('Discontinued product', 'Discontinued product'),
+        ('Pricing', 'Pricing'),
+        ('EMI availability', 'EMI availability'),
+        ('EMI Ineligibility', 'EMI Ineligibility'),
+        ('Window Shopper', 'Window Shopper'),
+        ('Upcoming Product Enquiry', 'Upcoming Product Enquiry'),
+        ('Outdated offers','Oudated offers'),
+        ('Unspecified', 'Unspecified'),
+        ('Others', 'Others')
     ]
 
     Name = models.CharField(max_length = 25)

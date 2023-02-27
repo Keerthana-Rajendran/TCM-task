@@ -72,7 +72,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        },
+        }
     },
 ]
 
@@ -125,8 +125,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Static'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'UserManager.CustomUser'
+LOGIN_URL = '/login/'
+AUTHENTICATION_BACKENDS = [
+    'UserManager.backends.CustomUserBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
