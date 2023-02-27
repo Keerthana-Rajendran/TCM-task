@@ -1,0 +1,16 @@
+{% extends 'UserManager/Homepage.html' %}
+{% block content %}
+<html>
+<head>
+  <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.3.min.js"></script>
+    <meta charset="utf-8">
+    <title>My Bokeh Chart</title>
+    {{ script|safe }}
+</head>
+<body>
+    <div>
+        {{ div|safe }}
+    </div>
+</body>
+</html>
+{% endblock %}

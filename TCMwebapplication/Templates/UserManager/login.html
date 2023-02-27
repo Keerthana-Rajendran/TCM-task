@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Admin</title>
+  <title>Login</title>
 
 
   <style type="text/css">
@@ -48,6 +48,9 @@
       color: #fff;
     }
   </style>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -62,7 +65,7 @@
     <div class="container register-form">
       <div class="form">
         <div class="note">
-          <p>Give a correct User and Password</p>
+          <p>Login to TCM</p>
         </div>
 
         <div class="form-content">
@@ -70,19 +73,17 @@
             <div class="col-md-6">
 
               <div class="form-group">
-                {% render_field form.Name class="form-control" placeholder="Username" %}
+                {% render_field form.email class="form-control" placeholder="Name" %}
               </div>
-
-            </div>
-            <div class="col-md-6">
-
               <div class="form-group">
-                {% render_field form.Set_Password class="form-control" placeholder="UserPassword" %}
+                {% render_field form.password class="form-control" placeholder="Password" %}
               </div>
-
+              <div class="form-group">
+                {% render_field form.user_type class="form-control" required='required' placeholder="Role" value='Sales Person' %}
+            </div>
             </div>
           </div>
-          <button type="submit" class="btnSubmit"><a href="home/">Login</a></button>
+          <button type="submit" class="btnSubmit">Login</button>
         
         </div>
       </div>
